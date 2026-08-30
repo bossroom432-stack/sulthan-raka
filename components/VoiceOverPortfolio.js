@@ -151,7 +151,18 @@ export default function VoiceOverPortfolio() {
           </div>
           <div className="relative flex justify-center max-[900px]:-order-1">
             <div className="relative flex aspect-square w-full max-w-[340px] items-center justify-center overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-panel to-panel-2 after:absolute after:inset-0 after:bg-[repeating-linear-gradient(45deg,rgba(198,161,91,0.04)_0_2px,transparent_2px_14px)]">
-              <span className="font-display text-8xl text-gold opacity-85">{content.identity.initials}</span>
+              {content.identity.photo ? (
+                <img
+                  src={content.identity.photo}
+                  alt={content.identity.alt || content.identity.name}
+                  className="h-full w-full object-cover"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                    event.currentTarget.nextSibling.style.display = "flex";
+                  }}
+                />
+              ) : null}
+              <span className="font-display text-8xl text-gold opacity-85" style={{ display: content.identity.photo ? "none" : "flex" }}>{content.identity.initials}</span>
             </div>
             <div className="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-gold bg-panel px-[18px] py-[9px] text-[12px] shadow-[0_14px_30px_rgba(0,0,0,0.4)]">
               <span className="relative h-2 w-2 rounded-full bg-patina after:absolute after:-inset-1 after:animate-pulse-ring after:rounded-full after:border after:border-patina" />{content.hero.availability}
@@ -181,7 +192,18 @@ export default function VoiceOverPortfolio() {
           <Reveal>
             <div className="relative">
               <div className="relative flex aspect-[0.85] w-full items-center justify-center overflow-hidden rounded-[18px] border border-line bg-gradient-to-br from-panel to-panel-2">
-                <span className="font-display text-[60px] text-gold opacity-85">{content.identity.photoInitials}</span>
+                {content.identity.photo ? (
+                  <img
+                    src={content.identity.photo}
+                    alt={content.identity.alt || content.identity.name}
+                    className="h-full w-full object-cover"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                      event.currentTarget.nextSibling.style.display = "flex";
+                    }}
+                  />
+                ) : null}
+                <span className="font-display text-[60px] text-gold opacity-85" style={{ display: content.identity.photo ? "none" : "flex" }}>{content.identity.photoInitials}</span>
               </div>
               <div className="absolute -bottom-[18px] -right-3.5 rounded-[14px] border border-gold bg-panel px-[18px] py-3.5 text-center shadow-[0_14px_30px_rgba(0,0,0,0.4)]">
                 <b className="block font-display text-[22px] text-gold">{content.about.experienceValue}</b><span className="text-[10px] text-marble-dim">{content.about.experienceLabel}</span>
@@ -198,7 +220,9 @@ export default function VoiceOverPortfolio() {
                   <div key={item.title} className={`${panelClass} p-5`}><h4 className="mb-2 font-display text-[15px] font-bold text-gold">{item.title}</h4><p className="text-[12.5px] leading-[1.6] text-marble-dim">{item.description}</p></div>
                 ))}
               </div>
-              <button className={`${outlineButtonClass} mt-[26px]`}><Download size={16} />{content.common.downloadCv}</button>
+              <a href={content.common.cvUrl || "#"} download className={`${outlineButtonClass} mt-[26px]`}>
+                <Download size={16} />{content.common.downloadCv}
+              </a>
             </div>
           </Reveal>
         </div>
