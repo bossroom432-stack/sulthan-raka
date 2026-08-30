@@ -12,7 +12,7 @@ export const portfolioContent = {
   ],
   common: { contactCta: "Hubungi Saya", listenCta: "Dengar Karya", downloadCv: "Unduh CV", active: "Aktif", play: "Putar", pause: "Jeda" },
   hero: {
-    eyebrow: "Portofolio Voice Over Bertema Sejarah", greeting: "Halo, saya samudra", headline: "Suara di Balik Sejarah.",
+    eyebrow: "Portofolio Voice Over Bertema Sejarah", greeting: "Halo, saya Sulthan", headline: "Suara di Balik Sejarah.",
     role: "Voice Over Artist — Perang, Mitologi & Tokoh Sejarah",
     description: "Saya menghadirkan narasi yang khidmat dan intens untuk kisah-kisah besar dari masa lalu — cocok untuk dokumenter, konten edukasi, podcast, dan produksi audio naratif lainnya. cocok untuk dokumenter, konten edukasi, podcast, dan produksi audio naratif lainnya.",
     availability: "Tersedia untuk Proyek Baru",
