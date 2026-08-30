@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { background: #0d1116; }
+  :focus-visible { outline: 2px solid #c6a15b; outline-offset: 3px; }
+}
+
+@layer components {
+  .hero-enter {
+    animation: hero-enter 1s cubic-bezier(.16, .8, .24, 1) 120ms both;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.8s ease var(--reveal-delay, 0ms),
+      transform 0.8s cubic-bezier(.16, .8, .24, 1) var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .sticky-layer {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    isolation: isolate;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dust { animation: none !important; }
+  * { transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .hero-enter { animation: none; }
+}
